@@ -86,13 +86,6 @@ var EventHandlers = {
       e.preventDefault();
       return;
     }
-    if (this.state.scrolling) {
-      return;
-    }
-    if (this.state.animating) {
-      e.preventDefault();
-      return;
-    }
     if (this.props.vertical && this.props.swipeToSlide && this.props.verticalSwiping) {
       e.preventDefault();
     }
@@ -109,13 +102,6 @@ var EventHandlers = {
     touchObject.swipeLength = Math.round(Math.sqrt(Math.pow(touchObject.curX - touchObject.startX, 2)));
     var verticalSwipeLength = Math.round(Math.sqrt(Math.pow(touchObject.curY - touchObject.startY, 2)));
 
-    if (!this.props.verticalSwiping && !this.state.swiping && verticalSwipeLength > 4) {
-      this.setState({
-        scrolling: true
-      })
-      return;
-    }
-
     if (this.props.verticalSwiping) {
       touchObject.swipeLength = verticalSwipeLength;
     }
@@ -130,6 +116,10 @@ var EventHandlers = {
     var dotCount = Math.ceil(this.state.slideCount / this.props.slidesToScroll);
     var swipeDirection = this.swipeDirection(this.state.touchObject);
     var touchSwipeLength = touchObject.swipeLength;
+
+    if (swipeDirection !== 'vertical') {
+      e.preventDefault();
+    }
 
     if (this.props.infinite === false) {
       if ((currentSlide === 0 && swipeDirection === 'right') || (currentSlide + 1 >= dotCount && swipeDirection === 'left')) {

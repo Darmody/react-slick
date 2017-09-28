@@ -1,7 +1,8 @@
 {
-  "name": "react-slick",
+  "name": "darmody-react-slick",
   "version": "0.15.4",
   "description": " React port of slick carousel",
+  "private": false,
   "main": "./lib",
   "files": [
     "dist",
@@ -85,7 +86,7 @@
       "./test-setup.js"
     ]
   },
-  "npmName": "react-slick",
+  "npmName": "darmody-react-slick",
   "npmFileMap": [
     {
       "basePath": "/dist/",
