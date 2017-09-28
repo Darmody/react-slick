@@ -86,6 +86,16 @@ var EventHandlers = {
       e.preventDefault();
       return;
     }
+
+    if (this.state.animating) {
+      e.preventDefault();
+      return;
+    }
+    
+    if (this.state.scrolling) {
+      return;
+    }
+
     if (this.props.vertical && this.props.swipeToSlide && this.props.verticalSwiping) {
       e.preventDefault();
     }
@@ -119,6 +129,11 @@ var EventHandlers = {
 
     if (swipeDirection !== 'vertical') {
       e.preventDefault();
+    } else if (!this.props.verticalSwiping && !this.state.swiping && verticalSwipeLength > 2) {
+      this.setState({
+        scrolling: true
+      })
+      return;
     }
 
     if (this.props.infinite === false) {
