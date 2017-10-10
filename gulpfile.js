@@ -17,12 +17,8 @@ gulp.task('clean', function () {
 gulp.task('copy', function () {
   gulp.src('./docs/index.html')
     .pipe(gulp.dest('./build'));
-  gulp.src('./docs/img/**/*')
+  return gulp.src('./docs/img/**/*')
       .pipe(gulp.dest('./build/img'));
-  gulp.src('./node_modules/slick-carousel/slick/fonts/*')
-      .pipe(gulp.dest('./build/fonts'));
-  return gulp.src('./node_modules/slick-carousel/slick/ajax-loader.gif')
-      .pipe(gulp.dest('./build'));
 });
 
 gulp.task('sass', function () {
