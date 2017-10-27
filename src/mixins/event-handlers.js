@@ -5,6 +5,8 @@ import assign from 'object-assign';
 import ReactDOM from 'react-dom';
 
 var EventHandlers = {
+  swipeStartTime: null,
+
   // Event handler for previous and next
   changeSlide: function (options) {
     var indexOffset, previousInt, slideOffset, unevenOffset, targetSlide;
@@ -63,6 +65,8 @@ var EventHandlers = {
   },
   swipeStart: function (e) {
     var touches, posX, posY;
+
+    this.swipeStartTime = Date.now();
 
     if ((this.props.swipe === false) || ('ontouchend' in document && this.props.swipe === false)) {
       return;
@@ -287,7 +291,10 @@ var EventHandlers = {
     if (!touchObject.swipeLength) {
       return;
     }
-    if (touchObject.swipeLength > minSwipe) {
+
+    const swipeTime = Date.now() - this.swipeStartTime;
+    const swipeSpeed = touchObject.swipeLength / swipeTime;
+    if (touchObject.swipeLength > minSwipe || swipeSpeed >= 0.3) {
       e.preventDefault();
 
       let slideCount, newSlide;
