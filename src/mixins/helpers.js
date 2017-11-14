@@ -26,7 +26,7 @@ var helpers = {
 
     var currentSlide = props.rtl ? slideCount - 1 - props.initialSlide : props.initialSlide;
 
-    this.setState({
+    const newState = {
       slideCount,
       slideWidth,
       listWidth,
@@ -34,7 +34,13 @@ var helpers = {
       currentSlide,
       slideHeight,
       listHeight,
-    }, function () {
+    };
+
+    if (slideWidth <= 0) {
+      delete newState.slideWidth;
+    }
+
+    this.setState(newState, function () {
 
       var targetLeft = getTrackLeft(assign({
         slideIndex: this.state.currentSlide,
