@@ -80,14 +80,20 @@ var helpers = {
       this.autoPlay();
     }
 
-    this.setState({
+    const newState = {
       slideCount,
       slideWidth,
       listWidth,
       trackWidth,
       slideHeight,
       listHeight,
-    }, function () {
+    }
+
+    if (slideWidth <= 0) {
+      delete newState.slideWidth
+    }
+
+    this.setState(newState, function () {
 
       var targetLeft = getTrackLeft(assign({
         slideIndex: this.state.currentSlide,

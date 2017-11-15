@@ -1,6 +1,6 @@
 {
   "name": "darmody-react-slick",
-  "version": "0.15.8",
+  "version": "0.16.0",
   "description": " React port of slick carousel",
   "private": false,
   "main": "./lib",
