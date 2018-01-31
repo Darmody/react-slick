@@ -1,6 +1,6 @@
 {
   "name": "darmody-react-slick",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "description": " React port of slick carousel",
   "private": false,
   "main": "./lib",
@@ -77,8 +77,8 @@
     "object-assign": "^4.1.0"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.1",
-    "react-dom": "^0.14.0 || ^15.0.1"
+    "react": "^0.14.0 || ^15.0.1 || ^16.0.0",
+    "react-dom": "^0.14.0 || ^15.0.1 || ^16.0.0"
   },
   "jest": {
     "setupFiles": [
