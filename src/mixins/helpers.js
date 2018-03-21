@@ -328,7 +328,7 @@ var helpers = {
   play: function(){
     var nextIndex;
 
-    if (!this.state.mounted) {
+    if (!this.mounted) {
       return false
     }
 
